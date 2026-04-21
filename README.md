@@ -46,7 +46,7 @@ With SMOTE → High recall, very low precision
 
 SHAP analysis highlights key features contributing to fraud prediction, revealing hidden transactional patterns.
 
-![SHAP Summary](results/shap_summary.png)
+![SHAP Summary](Figure_1.webp)
 
 🧠 Key Insights
 Ensemble models outperform linear models
