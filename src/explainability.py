@@ -1,7 +1,7 @@
 import shap
 import pandas as pd
 import xgboost as xgb
-
+import matplotlib.pyplot as plt
 
 def load_data():
     train = pd.read_csv("data/processed/train.csv")
@@ -35,7 +35,16 @@ def run_shap():
     explainer = shap.Explainer(model, X_train)
     shap_values = explainer(X_test[:100])  # small sample
 
-    shap.summary_plot(shap_values, X_test[:100])
+    import os
+    os.makedirs("results", exist_ok=True)
+
+    # Save SHAP plot
+    plt.figure()
+    shap.summary_plot(shap_values, X_test[:100], show=False)
+    plt.savefig("results/shap_summary.png", bbox_inches='tight')
+    plt.close()
+
+    print("✅ SHAP plot saved at results/shap_summary.png")
 
 
 if __name__ == "__main__":
